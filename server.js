@@ -35,11 +35,20 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      note: uuid(),
+      id: uuid(),
     };
     readAndAppend(newNote, './db/db.json');
+    console.log(uuid())
   }
 });
+
+/* app.delete('/api/notes', (req, res) => {
+  readFromFile('./db/db.json')
+    .then((data => {
+      res.json(JSON.parse(data))
+      console.log(data)
+    }));
+}); */
 
 //Listener
 app.listen(PORT, () => {
