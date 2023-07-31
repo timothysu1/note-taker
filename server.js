@@ -1,6 +1,6 @@
 //Imports
 const express = require("express")
-const { readFromFile, readAndAppend } = require('./helpers/fsUtils.js');
+const { readFromFile, readAndAppend, readAndDelete } = require('./helpers/fsUtils.js');
 const uuid = require('./helpers/uuid.js');
 
 
@@ -42,13 +42,12 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
-/* app.delete('/api/notes', (req, res) => {
-  readFromFile('./db/db.json')
-    .then((data => {
-      res.json(JSON.parse(data))
-      console.log(data)
-    }));
-}); */
+app.delete('/api/notes/:id', (req, res) => {
+  const id =req.params.id;
+  if (id) {
+    readAndDelete(id, './db/db.json')
+  };
+});
 
 //Listener
 app.listen(PORT, () => {
