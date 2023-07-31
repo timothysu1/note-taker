@@ -22,7 +22,7 @@ const readAndAppend = (cont, file) => {
       console.log(err);
     } else {
       const parseData = JSON.parse(data);
-      parseData.push(content);
+      parseData.push(cont);
       writeToFile(file,parseData);
     }
   });
