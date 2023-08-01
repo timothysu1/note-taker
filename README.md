@@ -4,6 +4,8 @@
 
 Create important notes that can be accessed later. View previously created notes with a click and delete notes that are completed.
 
+[Deployed Application](https://note-manager-d3aa6fcbd62d.herokuapp.com/)
+
 ## Built With
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Git](https://git-scm.com/)
