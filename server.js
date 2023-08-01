@@ -4,7 +4,7 @@ const { readFromFile, readAndAppend, readAndDelete } = require('./helpers/fsUtil
 const uuid = require('./helpers/uuid.js');
 
 
-const PORT = 3001;
+const PORT = process.env.port || 3001;
 const app = express();
 const path = require('path');
 
@@ -39,14 +39,17 @@ app.post('/api/notes', (req, res) => {
     };
     readAndAppend(newNote, './db/db.json');
     console.log(uuid())
-  }
+
+  }; 
+  res.send(console.log('Note added'))
 });
 
 app.delete('/api/notes/:id', (req, res) => {
-  const id =req.params.id;
+  const id = req.params.id;
   if (id) {
-    readAndDelete(id, './db/db.json')
+    readAndDelete(id, './db/db.json');
   };
+  res.send(console.log('Note deleted'));
 });
 
 //Listener
