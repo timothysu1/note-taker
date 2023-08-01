@@ -1,10 +1,9 @@
 //Imports
 const express = require("express")
 const { readFromFile, readAndAppend, readAndDelete } = require('./helpers/fsUtils.js');
-const uuid = require('./helpers/uuid.js');
+const { v4: uuidv4} = require('uuid');
 
-
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const path = require('path');
 
@@ -35,11 +34,9 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      id: uuid(),
+      id: uuidv4(),
     };
     readAndAppend(newNote, './db/db.json');
-    console.log(uuid())
-
   }; 
   res.send(console.log('Note added'))
 });
